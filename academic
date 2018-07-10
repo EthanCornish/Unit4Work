@@ -1,0 +1,19 @@
+listAcademic
+    UID, FirstName, LastName, Year, Score, Subject
+    0       1           2       3     4       5
+    ['136248', 'Jake', 'Blues', '11', '92', 'Yr 11 General Maths']
+
+listByStudent
+    UID, FirstName, LastName, Year, [ [Subject1, Score1], [Subject2, Score2] ]
+     0        1         2      3          4ai      4aii      4bi      4bii
+
+listOutput
+    UID, FirstName, LastName, Year, Academic, Count A, '', UID, FirstName, LastName, Year, Merit, Count Merit
+     0      1           2       3       4        5      6   7       8          9      10
+
+
+['136112', 'Matilda', 'Bay', '10', [['Yr 10 Psychology', '86'], ['Yr 10 Business', '83'], ['Yr 10 English', '80'], ['Yr 10 Maths', '73'], ['Yr 10 Science', '70'], ['Yr 10 Humanities', '70']]]
+['136248', 'Jake', 'Blues', '11', [['Yr 11 General Maths', '92'], ['Yr 11 Maths', '90'], ['Yr 11 Methods', '72']]]
+['146995', 'Matthew', 'Mc Donald', '7', [['Yr 7 RE', 'NULL']]]
+['165991', 'Lilly', 'Bay', '12', [['Yr 12 Ag Hort', '92'], ['Yr 12 PE', '88'], ['Yr 12 Maths Methods', '86'], ['Yr 12 English', '65']]]
+

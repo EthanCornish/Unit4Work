@@ -6,8 +6,8 @@ class ConversionGUI:
         self.master = master
         master.title('Image Testing')
 
-        self.image = PhotoImage(file='/Users/19ecornish/Desktop/IMG_5024.gif')
-        self.image = PhotoImage.zoom(self.image, 40, 30)
+        self.image = PhotoImage(file='/Users/19ecornish/Downloads/IMG_5024 (1).gif')
+#        self.image = PhotoImage.zoom(self.image, 40, 30)
 
         self.ImageLabel = Label(master, image=self.image)
         self.ImageLabel.grid()

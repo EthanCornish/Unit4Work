@@ -9,5 +9,3 @@ try:
     image.show()  # displays the image
 except FileNotFoundError:
     print('The file was not found')
-
-
