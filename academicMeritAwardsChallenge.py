@@ -118,17 +118,17 @@ for a in listAcademic2:
         subjects.append(item[0])
     # Appending each record in listAcademic2 to listAcademic3
     listAcademic3.append([listAcademic2[number][0], listAcademic2[number][1], listAcademic2[number][2],
-                          listAcademic2[number][3], subjects ])
+                          listAcademic2[number][3], subjects, len(subjects)])
     number += 1
 
-for c in listAcademic3:
-    print(c)
+for b in listAcademic3:
+    print(b)
 
 
-# listMerit = []
-# mImportFile = open('/Users/19ecornish/Downloads/noe-comp.xlsx - merit.csv', 'r')
-# for line in csv.reader(mImportFile):
-#    listMerit.append(line)
-# mImportFile.close()
-# print('DEBUG listMerit[0:2] =', listMerit[0:2])
-
+#listMerit1 = []
+#mImportFile = open('/Users/19ecornish/Downloads/noe-comp.xlsx - merit.csv', 'r')
+#for line in csv.reader(mImportFile):
+#   listMerit1.append(line)
+#mImportFile.close()
+#for record in listMerit1:
+#    print(record)
