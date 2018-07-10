@@ -1,11 +1,15 @@
-listAcademic
+listAcademic1
     UID, FirstName, LastName, Year, Score, Subject
     0       1           2       3     4       5
     ['136248', 'Jake', 'Blues', '11', '92', 'Yr 11 General Maths']
 
-listByStudent
+listAcademic2
     UID, FirstName, LastName, Year, [ [Subject1, Score1], [Subject2, Score2] ]
      0        1         2      3          4ai      4aii      4bi      4bii
+
+listAcademic3
+    UID, FirstName, LastName, Year, Academic(subjects), Count A,
+     0       1          2       3           4              5
 
 listOutput
     UID, FirstName, LastName, Year, Academic, Count A, '', UID, FirstName, LastName, Year, Merit, Count Merit
