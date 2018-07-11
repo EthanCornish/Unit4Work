@@ -1,0 +1,43 @@
+listAcademic1 --- Ordered
+    UID, FirstName, LastName, Year, Score, Subject
+    0       1           2       3     4       5
+    ['136248', 'Jake', 'Blues', '11', '92', 'Yr 11 General Maths']
+
+listAcademic2 --- One Record Per Person
+    UID, FirstName, LastName, Year, [ [Subject1, Score1], [Subject2, Score2] ]
+     0        1         2      3          4ai      4aii      4bi      4bii
+
+listAcademic3 --- Output Form
+    UID, FirstName, LastName, Year, Academic(subjects), Count A
+     0       1          2       3           4              5
+
+
+Final Output in list form for Academic
+['136112', 'Matilda', 'Bay', '10', ['Yr 10 Psychology']]
+['136248', 'Jake', 'Blues', '11', ['Yr 11 General Maths', 'Yr 11 Maths']]
+['146995', 'Matthew', 'Mc Donald', '7', []]
+['165991', 'Lilly', 'Bay', '12', ['Yr 12 Ag Hort', 'Yr 12 PE', 'Yr 12 Maths Methods']]
+
+
+listMerit1 --- Ordered ----- All records have merit awards.
+    UID, FirstName, LastName, Year, Subject
+     0       1          2       3      4
+
+listMerit2 --- One Record Per Person
+    UID, FirstName, LastName, Year, [Subject1, Subject2, ...]
+     0       1          2       3       4a        4b
+
+listMerit3 --- Output Form
+    UID, FirstName, LastName, Year, Merit(subjects), Count M
+     0       1          2       3           4              5
+
+['136112', 'Bay', 'Matilda', '11', ['Year 12 Dance Unit 3', 'Year 11 Sport']]
+['136248', 'Blues', 'Jake', '10', ['Year 10 Maths', 'Year 10 Art']]
+['146995', 'Malone', 'Tom', '10', ['Year 10 Chem']]
+['165991', 'Bay', 'Lilly', '11', ['Year 12 Dance Unit 3', 'Year 11 Art']]
+
+
+
+listOutput
+    UID, FirstName, LastName, Year, Academic, Count A, '', UID, FirstName, LastName, Year, Merit(Subjects), Count M
+     0      1           2       3       4        5      6   7       8          9      10          11           12

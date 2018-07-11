@@ -229,10 +229,6 @@ for i in listAcademic3:
     number += 1
     print('\n')
 
-print('\nlistOutput V1')
-for record in listOutput:
-    print(record)
-
 for i in listMerit3:
     found = False
     for item in listOutput:
