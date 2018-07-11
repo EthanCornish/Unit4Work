@@ -1,7 +1,10 @@
+# CSV library used when reading files to automatically strip the \n from each line and split at each comma into a list
 import csv
 
+# Defining listAcademic1, reading file (fileName will be input from user)
 listAcademic1 = []
 aImportFile = open('/Users/19ecornish/Downloads/noe-comp.xlsx - academic.csv', 'r')
+# Using csv.reader to strip and split each line.
 for line in csv.reader(aImportFile):
     listAcademic1.append(line)
 aImportFile.close()
@@ -25,7 +28,7 @@ for entry in listAcademic1:
     poppedList.append(entry.pop(6))
 
     # Rearranging the order of the list
-    # Make a copy of the sublist, wipe origional sublist then add things back in correct order
+    # Make a copy of the sublist, wipe original sublist then add things back in correct order
     tempList = entry
     entry = []
     entry.append(tempList[1])
@@ -121,14 +124,124 @@ for a in listAcademic2:
                           listAcademic2[number][3], subjects, len(subjects)])
     number += 1
 
-for b in listAcademic3:
-    print(b)
+
+# ------------------------------------------------------------------ #
 
 
-#listMerit1 = []
-#mImportFile = open('/Users/19ecornish/Downloads/noe-comp.xlsx - merit.csv', 'r')
-#for line in csv.reader(mImportFile):
-#   listMerit1.append(line)
-#mImportFile.close()
-#for record in listMerit1:
-#    print(record)
+# Defining listMerit1, reading file (fileName will be input from user)
+listMerit1 = []
+mImportFile = open('/Users/19ecornish/Downloads/noe-comp.xlsx - merit copy.csv', 'r')
+# Using csv.reader to strip and split each line.
+for line in csv.reader(mImportFile):
+   listMerit1.append(line)
+mImportFile.close()
+
+# Remove the header record from the array
+poppedList.append(listMerit1.pop(0))
+# Rearranging the order of the list in the same way listAcademic1 was done
+for record in listMerit1:
+    tempList = record
+    record = []
+    record.append(tempList[0])
+    record.append(tempList[2])
+    record.append(tempList[1])
+    record.append(tempList[3])
+    record.append(tempList[4])
+    record.append(tempList[5])
+
+
+# Sorts listMerit1 by student number
+listMerit1.sort()
+
+# While loop to remove all records that do not have merit awards for
+# Number is used as a counting variable
+number = 0
+# Counts how many times a record has been popped to counter-balance the index changing
+cycles = 0
+# Total for the while loop. Set now as the len of the list will change due to popping
+total = len(listMerit1)
+while number < total:
+    if listMerit1[number-cycles][5] == 'none':
+        poppedList.append(listMerit1.pop(number-cycles))
+        cycles += 1
+    number += 1
+
+# Creating listMerit2 in the form shown in the textfile
+# Defining listMerit2 and resetting number
+listMerit2 = []
+number = 0
+for b in listMerit1:
+    # The fourth index is in a sublist as more subjects can be added
+    listMerit2.append([listMerit1[number][0], listMerit1[number][2], listMerit1[number][1], listMerit1[number][3], [listMerit1[number][4]] ])
+    number += 1
+
+# If a student has multiple records in listAcademic2 it adds the subjects into one record.
+number = 0
+for c in listMerit2:
+    if listMerit2[number][0] == listMerit2[number-1][0]:
+        listMerit2[number][4] = listMerit2[number][4] + listMerit2[number-1][4]
+    number += 1
+
+
+# Loop to make sure that each person only has one record (the record with all of the subjects)
+# Resetting number, cycles and total
+number = 0
+cycles = 0
+total = len(listMerit2)
+while number < total:
+    # If the UID on the current record is the same as the previous record and the current record is not the first
+    if listMerit2[number-cycles][0] == listMerit2[number-cycles-1][0] and number - 1 >= 0:
+        # Pop the previous record
+        poppedList.append(listMerit2.pop(number-1-cycles))
+        cycles += 1
+    number += 1
+
+
+# Creating listMerit3 in form shown in textfile
+listMerit3 = []
+for d in listMerit2:
+    listMerit3.append([d[0], d[1], d[2], d[3], d[4], len(d[4])])
+
+# Creating listOutput as shown in textfile
+
+# Defining list and resetting number
+listOutput = []
+listOutput.append(['UID', 'Preferred', 'Surname', 'Year', 'Academic', 'Count A', '',
+                   'UID', 'Preferred', 'Surname', 'Year', 'Merit', 'Count M'])
+number = 0
+# Space is used as a placeholder for the empty column in the output table
+space = ''
+# Loop goes through each record in ListAcademic 3 and if there is also a
+#       record for merit for the same student then it is added as one record
+#       otherwise the record is left as just the academic with place holders
+for i in listAcademic3:
+    found = False
+    for item in listMerit3:
+        if item[0] == i[0]:
+            found = True
+            break
+    if found:
+        listOutput.append(
+            [i[0], i[1], i[2], i[3], i[4], i[5], space, listMerit3[number][0], listMerit3[number][1],
+                listMerit3[number][2], listMerit3[number][3], listMerit3[number][4], listMerit3[number][5]])
+    elif not found:
+        listOutput.append([i[0], i[1], i[2], i[3], i[4], i[5], space, space, space, space, space, space, space])
+    number += 1
+    print('\n')
+
+print('\nlistOutput V1')
+for record in listOutput:
+    print(record)
+
+for i in listMerit3:
+    found = False
+    for item in listOutput:
+        if i[0] == item[0]:
+            found = True
+            break
+    if not found:
+        listOutput.append([space, space, space, space, space, space, space, i[0], i[1], i[2], i[3], i[4], i[5]])
+
+print('\nlistOutput V2')
+for record in listOutput:
+    print(record)
